@@ -8,10 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:'Montserrat',sans-serif;
-background:radial-gradient(circle at top,#0a0f2c 0%,#050816 40%,#000 100%);
+background:radial-gradient(circle at top,#0a0f2c 0%,#050816 50%,#000 100%);
 color:white;
 overflow-x:hidden;
 }
@@ -27,7 +29,7 @@ justify-content:center;
 
 .login-box{
 background:#111c4d;
-padding:45px;
+padding:50px;
 border-radius:20px;
 border:1px solid #1e3a8a;
 width:360px;
@@ -37,8 +39,8 @@ box-shadow:0 0 30px rgba(59,130,246,.3);
 
 .login-box h1{
 font-family:'Orbitron';
-margin-bottom:25px;
 color:#60a5fa;
+margin-bottom:25px;
 }
 
 .login-box input{
@@ -66,35 +68,9 @@ cursor:pointer;
 
 .dashboard{
 display:none;
-min-height:100vh;
-}
-
-.layout{
-display:flex;
-}
-
-.sidebar{
-width:260px;
-background:#111c4d;
-padding:30px;
-border-right:1px solid #1e3a8a;
-}
-
-.sidebar h2{
-font-family:'Orbitron';
-color:#60a5fa;
-margin-bottom:30px;
-}
-
-.sidebar li{
-list-style:none;
-margin-bottom:18px;
-color:#cbd5e1;
-}
-
-.main{
-flex:1;
 padding:40px;
+max-width:1200px;
+margin:auto;
 }
 
 .section{
@@ -107,6 +83,8 @@ color:#60a5fa;
 margin-bottom:20px;
 }
 
+/* CARD */
+
 .card{
 background:#111c4d;
 padding:25px;
@@ -115,7 +93,15 @@ border:1px solid #1e3a8a;
 margin-bottom:20px;
 }
 
-/* progress */
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+/* PROGRESS */
 
 .progress-bar{
 height:18px;
@@ -131,15 +117,7 @@ width:70%;
 background:linear-gradient(90deg,#2563eb,#3b82f6);
 }
 
-/* technician grid */
-
-.tech-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-/* photos */
+/* PHOTOS */
 
 .photo-grid{
 display:grid;
@@ -153,7 +131,7 @@ width:100%;
 border-radius:10px;
 }
 
-/* invoice */
+/* INVOICE */
 
 .invoice-table{
 width:100%;
@@ -171,27 +149,13 @@ color:#60a5fa;
 font-weight:600;
 }
 
-.invoice-summary{
-margin-top:20px;
-max-width:300px;
-margin-left:auto;
-}
-
-.invoice-summary div{
-display:flex;
-justify-content:space-between;
-margin-bottom:8px;
-}
-
 .total{
-font-size:18px;
 font-weight:bold;
 color:#60a5fa;
 }
 
 .pay-btn{
 margin-top:20px;
-width:100%;
 padding:14px;
 border:none;
 border-radius:30px;
@@ -199,18 +163,44 @@ background:linear-gradient(90deg,#2563eb,#3b82f6);
 color:white;
 font-weight:600;
 cursor:pointer;
+width:100%;
 }
 
-/* signature */
+/* DOCUMENTS */
 
-canvas{
+.doc-alert{
+background:#1e293b;
+padding:14px;
+border-radius:12px;
+border:1px solid #ef4444;
+color:#fca5a5;
+margin-bottom:20px;
+}
+
+.sign-pad{
 background:white;
-border-radius:10px;
+border-radius:8px;
 margin-top:10px;
 cursor:crosshair;
 }
 
-/* notifications */
+.sign-btn{
+margin-top:10px;
+padding:8px 16px;
+border:none;
+border-radius:6px;
+background:#2563eb;
+color:white;
+cursor:pointer;
+}
+
+.sign-status{
+margin-top:8px;
+font-size:13px;
+color:#f87171;
+}
+
+/* NOTIFICATIONS */
 
 .notification{
 background:#1e293b;
@@ -219,7 +209,7 @@ border-radius:10px;
 margin-bottom:10px;
 }
 
-/* cursor glow */
+/* CURSOR GLOW */
 
 #cursorGlow{
 position:fixed;
@@ -234,176 +224,287 @@ filter:blur(28px);
 opacity:.6;
 z-index:999;
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN -->
+
 <div class="login-screen" id="loginScreen">
+
 <div class="login-box">
 <h1>Client Portal</h1>
 <input placeholder="Email">
 <input type="password" placeholder="Password">
 <button onclick="login()">Login</button>
 </div>
+
 </div>
+
+<!-- DASHBOARD -->
 
 <div class="dashboard" id="dashboard">
-<div class="layout">
 
-<div class="sidebar">
-<h2>SparksByAura</h2>
-<ul>
-<li>Dashboard</li>
-<li>Project Progress</li>
-<li>Technician</li>
-<li>Invoices</li>
-<li>Documents</li>
-<li>Progress Photos</li>
-</ul>
-</div>
-
-<div class="main">
+<!-- NOTIFICATIONS -->
 
 <div class="section">
 <h2>Notifications</h2>
 <div id="notifications"></div>
 </div>
 
+<!-- PROJECT -->
+
 <div class="section">
+
 <h2>Project Progress</h2>
+
 <div class="card">
+
 Panel Upgrade – Hoboken NJ
+
 <div class="progress-bar">
 <div class="progress"></div>
 </div>
+
 <p style="margin-top:8px;color:#94a3b8">70% Complete</p>
-</div>
+
 </div>
 
+</div>
+
+<!-- TECHNICIAN -->
+
 <div class="section">
+
 <h2>Assigned Technician</h2>
-<div class="tech-grid">
+
+<div class="grid">
+
 <div class="card">
 <h3>Daniel Rivera</h3>
 <p>📞 (718) 555-9033</p>
 <p>Experience: 12 Years</p>
 <p>License: Master Electrician</p>
 </div>
+
 <div class="card">
 <h3>Next Visit</h3>
 <p>March 18 – 10:00 AM</p>
 </div>
-</div>
+
 </div>
 
+</div>
+
+<!-- PHOTOS -->
+
 <div class="section">
-<h2>Invoice</h2>
+
+<h2>Progress Photos</h2>
+
 <div class="card">
+
+<input type="file" id="photoUpload">
+
+<div class="photo-grid" id="photoGrid"></div>
+
+</div>
+
+</div>
+
+<!-- INVOICE -->
+
+<div class="section">
+
+<h2>Invoice</h2>
+
+<div class="card">
+
 <table class="invoice-table">
-<tr class="category"><td colspan="4">Materials</td></tr>
-<tr><td>200A Electrical Panel</td><td>$420</td></tr>
+
+<tr class="category"><td colspan="2">Materials</td></tr>
+
+<tr><td>200A Panel</td><td>$420</td></tr>
 <tr><td>Breakers + Wiring</td><td>$210</td></tr>
-<tr class="category"><td colspan="4">Labor</td></tr>
-<tr><td>Panel Installation (6 hrs)</td><td>$720</td></tr>
+
+<tr class="category"><td colspan="2">Labor</td></tr>
+
+<tr><td>Installation</td><td>$720</td></tr>
 <tr><td>Inspection</td><td>$120</td></tr>
+
+<tr class="total"><td>Total</td><td>$1,590</td></tr>
+
 </table>
 
-<div class="invoice-summary">
-<div><span>Subtotal</span><span>$1,470</span></div>
-<div><span>Tax</span><span>$120</span></div>
-<div class="total"><span>Total</span><span>$1,590</span></div>
-</div>
-
 <button class="pay-btn">Pay Invoice</button>
+
 </div>
+
 </div>
+
+<!-- DOCUMENTS -->
 
 <div class="section">
-<h2>E‑Sign Documents</h2>
-<div class="card">
-<canvas id="signaturePad" width="500" height="200"></canvas>
-<button onclick="clearPad()">Clear</button>
-<button onclick="saveSignature()">Sign Document</button>
-</div>
+
+<h2>Client Documents</h2>
+
+<div class="doc-alert">
+⚠ Documents require signature before work begins
 </div>
 
-<div class="section">
-<h2>Progress Photos</h2>
-<div class="card">
-<input type="file" id="photoUpload">
-<div class="photo-grid" id="photoGrid"></div>
+<div class="grid">
+
+<div class="card doc-card" data-doc="service">
+<h3>Service Agreement</h3>
+<canvas class="sign-pad" width="350" height="120"></canvas>
+<button class="sign-btn">Sign Document</button>
+<p class="sign-status">Signature Required</p>
 </div>
+
+<div class="card doc-card" data-doc="work">
+<h3>Work Authorization</h3>
+<canvas class="sign-pad" width="350" height="120"></canvas>
+<button class="sign-btn">Sign Document</button>
+<p class="sign-status">Signature Required</p>
+</div>
+
+<div class="card doc-card" data-doc="permit">
+<h3>Permit Authorization</h3>
+<canvas class="sign-pad" width="350" height="120"></canvas>
+<button class="sign-btn">Sign Document</button>
+<p class="sign-status">Signature Required</p>
 </div>
 
 </div>
+
 </div>
+
 </div>
 
 <div id="cursorGlow"></div>
 
 <script>
+
+/* LOGIN */
+
 function login(){
 document.getElementById("loginScreen").style.display="none"
 document.getElementById("dashboard").style.display="block"
 }
 
-const canvas=document.getElementById("signaturePad")
-const ctx=canvas.getContext("2d")
+/* SIGNATURE PAD */
+
+document.querySelectorAll(".sign-pad").forEach(pad=>{
+const ctx=pad.getContext("2d")
 let drawing=false
 
-canvas.addEventListener("mousedown",()=>drawing=true)
-canvas.addEventListener("mouseup",()=>drawing=false)
-canvas.addEventListener("mousemove",draw)
+pad.addEventListener("mousedown",()=>drawing=true)
+pad.addEventListener("mouseup",()=>drawing=false)
 
-function draw(e){
+pad.addEventListener("mousemove",e=>{
 if(!drawing)return
+
 ctx.lineWidth=2
 ctx.lineCap="round"
 ctx.strokeStyle="black"
-ctx.lineTo(e.offsetX,e.offsetY)
+
+const rect=pad.getBoundingClientRect()
+const x=e.clientX-rect.left
+const y=e.clientY-rect.top
+
+ctx.lineTo(x,y)
 ctx.stroke()
 ctx.beginPath()
-ctx.moveTo(e.offsetX,e.offsetY)
+ctx.moveTo(x,y)
+
+})
+})
+
+/* SIGN BUTTON */
+
+document.querySelectorAll(".sign-btn").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+const card=btn.closest(".doc-card")
+const status=card.querySelector(".sign-status")
+const id=card.dataset.doc
+
+status.textContent="Signed ✓"
+status.style.color="#4ade80"
+
+localStorage.setItem("doc_"+id,"signed")
+
+})
+
+})
+
+/* RESTORE SIGNATURE STATUS */
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+document.querySelectorAll(".doc-card").forEach(card=>{
+
+const id=card.dataset.doc
+const status=card.querySelector(".sign-status")
+
+if(localStorage.getItem("doc_"+id)==="signed"){
+
+status.textContent="Signed ✓"
+status.style.color="#4ade80"
+
 }
 
-function clearPad(){
-ctx.clearRect(0,0,canvas.width,canvas.height)
-}
+})
 
-function saveSignature(){
-alert("Document Signed")
-}
+})
+
+/* PHOTO UPLOAD */
 
 const upload=document.getElementById("photoUpload")
 const grid=document.getElementById("photoGrid")
 
 upload.addEventListener("change",function(){
+
 const file=this.files[0]
 const reader=new FileReader()
 
 reader.onload=function(e){
+
 const img=document.createElement("img")
 img.src=e.target.result
+
 grid.appendChild(img)
-addNotification("Technician uploaded new progress photo")
+
+addNotification("New progress photo uploaded")
+
 }
 
 reader.readAsDataURL(file)
+
 })
 
 function addNotification(text){
+
 const note=document.createElement("div")
 note.className="notification"
 note.innerText=text
+
 document.getElementById("notifications").prepend(note)
+
 }
 
+/* CURSOR GLOW */
+
 const glow=document.getElementById("cursorGlow")
+
 document.addEventListener("mousemove",e=>{
 glow.style.left=e.clientX+'px'
 glow.style.top=e.clientY+'px'
 })
+
 </script>
 
 </body>

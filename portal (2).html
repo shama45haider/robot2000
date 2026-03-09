@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SparksByAura | Client Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Montserrat',sans-serif;
+background:radial-gradient(circle at top,#0a0f2c 0%,#050816 40%,#000 100%);
+color:white;
+overflow-x:hidden;
+}
+
+/* LOGIN */
+
+.login-screen{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.login-box{
+background:#111c4d;
+padding:45px;
+border-radius:20px;
+border:1px solid #1e3a8a;
+width:360px;
+text-align:center;
+box-shadow:0 0 30px rgba(59,130,246,.3);
+}
+
+.login-box h1{
+font-family:'Orbitron';
+margin-bottom:25px;
+color:#60a5fa;
+}
+
+.login-box input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:10px;
+border:1px solid #1e3a8a;
+background:#0a0f2c;
+color:white;
+}
+
+.login-box button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#2563eb,#3b82f6);
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:none;
+min-height:100vh;
+}
+
+.layout{
+display:flex;
+}
+
+.sidebar{
+width:260px;
+background:#111c4d;
+padding:30px;
+border-right:1px solid #1e3a8a;
+}
+
+.sidebar h2{
+font-family:'Orbitron';
+color:#60a5fa;
+margin-bottom:30px;
+}
+
+.sidebar li{
+list-style:none;
+margin-bottom:18px;
+color:#cbd5e1;
+}
+
+.main{
+flex:1;
+padding:40px;
+}
+
+.section{
+margin-bottom:50px;
+}
+
+.section h2{
+font-family:'Orbitron';
+color:#60a5fa;
+margin-bottom:20px;
+}
+
+.card{
+background:#111c4d;
+padding:25px;
+border-radius:18px;
+border:1px solid #1e3a8a;
+margin-bottom:20px;
+}
+
+/* progress */
+
+.progress-bar{
+height:18px;
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.progress{
+height:100%;
+width:70%;
+background:linear-gradient(90deg,#2563eb,#3b82f6);
+}
+
+/* technician grid */
+
+.tech-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+/* photos */
+
+.photo-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:15px;
+}
+
+.photo-grid img{
+width:100%;
+border-radius:10px;
+}
+
+/* invoice */
+
+.invoice-table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+.invoice-table td{
+padding:10px;
+border-bottom:1px solid #1e3a8a;
+}
+
+.category td{
+color:#60a5fa;
+font-weight:600;
+}
+
+.invoice-summary{
+margin-top:20px;
+max-width:300px;
+margin-left:auto;
+}
+
+.invoice-summary div{
+display:flex;
+justify-content:space-between;
+margin-bottom:8px;
+}
+
+.total{
+font-size:18px;
+font-weight:bold;
+color:#60a5fa;
+}
+
+.pay-btn{
+margin-top:20px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#2563eb,#3b82f6);
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+/* signature */
+
+canvas{
+background:white;
+border-radius:10px;
+margin-top:10px;
+cursor:crosshair;
+}
+
+/* notifications */
+
+.notification{
+background:#1e293b;
+padding:10px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+/* cursor glow */
+
+#cursorGlow{
+position:fixed;
+width:120px;
+height:120px;
+pointer-events:none;
+background:radial-gradient(circle,rgba(59,130,246,.12),transparent 65%);
+border-radius:50%;
+transform:translate(-50%,-50%);
+mix-blend-mode:screen;
+filter:blur(28px);
+opacity:.6;
+z-index:999;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-screen" id="loginScreen">
+<div class="login-box">
+<h1>Client Portal</h1>
+<input placeholder="Email">
+<input type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+</div>
+</div>
+
+<div class="dashboard" id="dashboard">
+<div class="layout">
+
+<div class="sidebar">
+<h2>SparksByAura</h2>
+<ul>
+<li>Dashboard</li>
+<li>Project Progress</li>
+<li>Technician</li>
+<li>Invoices</li>
+<li>Documents</li>
+<li>Progress Photos</li>
+</ul>
+</div>
+
+<div class="main">
+
+<div class="section">
+<h2>Notifications</h2>
+<div id="notifications"></div>
+</div>
+
+<div class="section">
+<h2>Project Progress</h2>
+<div class="card">
+Panel Upgrade – Hoboken NJ
+<div class="progress-bar">
+<div class="progress"></div>
+</div>
+<p style="margin-top:8px;color:#94a3b8">70% Complete</p>
+</div>
+</div>
+
+<div class="section">
+<h2>Assigned Technician</h2>
+<div class="tech-grid">
+<div class="card">
+<h3>Daniel Rivera</h3>
+<p>📞 (718) 555-9033</p>
+<p>Experience: 12 Years</p>
+<p>License: Master Electrician</p>
+</div>
+<div class="card">
+<h3>Next Visit</h3>
+<p>March 18 – 10:00 AM</p>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>Invoice</h2>
+<div class="card">
+<table class="invoice-table">
+<tr class="category"><td colspan="4">Materials</td></tr>
+<tr><td>200A Electrical Panel</td><td>$420</td></tr>
+<tr><td>Breakers + Wiring</td><td>$210</td></tr>
+<tr class="category"><td colspan="4">Labor</td></tr>
+<tr><td>Panel Installation (6 hrs)</td><td>$720</td></tr>
+<tr><td>Inspection</td><td>$120</td></tr>
+</table>
+
+<div class="invoice-summary">
+<div><span>Subtotal</span><span>$1,470</span></div>
+<div><span>Tax</span><span>$120</span></div>
+<div class="total"><span>Total</span><span>$1,590</span></div>
+</div>
+
+<button class="pay-btn">Pay Invoice</button>
+</div>
+</div>
+
+<div class="section">
+<h2>E‑Sign Documents</h2>
+<div class="card">
+<canvas id="signaturePad" width="500" height="200"></canvas>
+<button onclick="clearPad()">Clear</button>
+<button onclick="saveSignature()">Sign Document</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Progress Photos</h2>
+<div class="card">
+<input type="file" id="photoUpload">
+<div class="photo-grid" id="photoGrid"></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="cursorGlow"></div>
+
+<script>
+function login(){
+document.getElementById("loginScreen").style.display="none"
+document.getElementById("dashboard").style.display="block"
+}
+
+const canvas=document.getElementById("signaturePad")
+const ctx=canvas.getContext("2d")
+let drawing=false
+
+canvas.addEventListener("mousedown",()=>drawing=true)
+canvas.addEventListener("mouseup",()=>drawing=false)
+canvas.addEventListener("mousemove",draw)
+
+function draw(e){
+if(!drawing)return
+ctx.lineWidth=2
+ctx.lineCap="round"
+ctx.strokeStyle="black"
+ctx.lineTo(e.offsetX,e.offsetY)
+ctx.stroke()
+ctx.beginPath()
+ctx.moveTo(e.offsetX,e.offsetY)
+}
+
+function clearPad(){
+ctx.clearRect(0,0,canvas.width,canvas.height)
+}
+
+function saveSignature(){
+alert("Document Signed")
+}
+
+const upload=document.getElementById("photoUpload")
+const grid=document.getElementById("photoGrid")
+
+upload.addEventListener("change",function(){
+const file=this.files[0]
+const reader=new FileReader()
+
+reader.onload=function(e){
+const img=document.createElement("img")
+img.src=e.target.result
+grid.appendChild(img)
+addNotification("Technician uploaded new progress photo")
+}
+
+reader.readAsDataURL(file)
+})
+
+function addNotification(text){
+const note=document.createElement("div")
+note.className="notification"
+note.innerText=text
+document.getElementById("notifications").prepend(note)
+}
+
+const glow=document.getElementById("cursorGlow")
+document.addEventListener("mousemove",e=>{
+glow.style.left=e.clientX+'px'
+glow.style.top=e.clientY+'px'
+})
+</script>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SparksByAura | Client Portal</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -13,216 +13,169 @@
 
 body{
 font-family:'Montserrat',sans-serif;
-background:radial-gradient(circle at top,#0a0f2c 0%,#050816 50%,#000 100%);
-color:white;
+background:radial-gradient(circle at top,#0a0f2c 0%,#050816 40%,#000 100%);
+color:#fff;
 overflow-x:hidden;
 }
 
-/* LOGIN */
+/* NAV */
 
-.login-screen{
-height:100vh;
+nav{
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+padding:20px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #1e3a8a;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
-.login-box{
-background:#111c4d;
-padding:50px;
-border-radius:20px;
-border:1px solid #1e3a8a;
-width:360px;
-text-align:center;
-box-shadow:0 0 30px rgba(59,130,246,.3);
+nav img{
+height:55px;
+position:absolute;
+left:20px;
 }
 
-.login-box h1{
-font-family:'Orbitron';
-color:#60a5fa;
-margin-bottom:25px;
+.nav-links{
+display:flex;
+gap:30px;
 }
 
-.login-box input{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border-radius:10px;
-border:1px solid #1e3a8a;
-background:#0a0f2c;
-color:white;
-}
-
-.login-box button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#2563eb,#3b82f6);
-color:white;
+.nav-links a{
+text-decoration:none;
+color:#cbd5e1;
 font-weight:600;
-cursor:pointer;
 }
 
-/* DASHBOARD */
-
-.dashboard{
-display:none;
-padding:40px;
-max-width:1200px;
-margin:auto;
-}
-
-.section{
-margin-bottom:50px;
-}
-
-.section h2{
-font-family:'Orbitron';
+.nav-links a:hover{
 color:#60a5fa;
-margin-bottom:20px;
+}
+
+/* SECTION */
+
+section{padding:80px 20px}
+.container{max-width:1100px;margin:auto}
+
+/* TITLE */
+
+.section-title{
+font-family:'Orbitron';
+text-align:center;
+font-size:36px;
+margin-bottom:30px;
+background:linear-gradient(90deg,#60a5fa,#3b82f6,#1d4ed8);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* GRID */
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
 }
 
 /* CARD */
 
 .card{
 background:#111c4d;
-padding:25px;
-border-radius:18px;
+padding:30px;
+border-radius:22px;
 border:1px solid #1e3a8a;
-margin-bottom:20px;
 }
 
-/* GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-}
-
-/* PROGRESS */
-
-.progress-bar{
-height:18px;
-background:#1e293b;
-border-radius:20px;
-overflow:hidden;
-margin-top:10px;
-}
-
-.progress{
-height:100%;
-width:70%;
-background:linear-gradient(90deg,#2563eb,#3b82f6);
-}
-
-/* PHOTOS */
-
-.photo-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-margin-top:15px;
-}
-
-.photo-grid img{
-width:100%;
-border-radius:10px;
-}
-
-/* INVOICE */
-
-.invoice-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-.invoice-table td{
-padding:10px;
-border-bottom:1px solid #1e3a8a;
-}
-
-.category td{
-color:#60a5fa;
-font-weight:600;
-}
-
-.total{
-font-weight:bold;
-color:#60a5fa;
-}
-
-.pay-btn{
-margin-top:20px;
-padding:14px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#2563eb,#3b82f6);
-color:white;
-font-weight:600;
-cursor:pointer;
-width:100%;
-}
-
-/* DOCUMENTS */
+/* ALERT */
 
 .doc-alert{
 background:#1e293b;
-padding:14px;
-border-radius:12px;
+padding:12px;
+border-radius:10px;
 border:1px solid #ef4444;
 color:#fca5a5;
 margin-bottom:20px;
 }
 
-.sign-pad{
-background:white;
-border-radius:8px;
+/* PDF VIEWER */
+
+.doc-viewer iframe{
+width:100%;
+height:220px;
+border:1px solid #1e3a8a;
+border-radius:10px;
 margin-top:10px;
+}
+
+/* SIGN PAD */
+
+.sign-pad{
+background:#fff;
+border-radius:8px;
+margin-top:15px;
 cursor:crosshair;
 }
 
+/* BUTTON */
+
 .sign-btn{
 margin-top:10px;
-padding:8px 16px;
+padding:10px 16px;
 border:none;
 border-radius:6px;
 background:#2563eb;
 color:white;
+font-weight:600;
 cursor:pointer;
 }
 
+.sign-btn:disabled{
+background:#475569;
+cursor:not-allowed;
+}
+
 .sign-status{
-margin-top:8px;
+margin-top:10px;
 font-size:13px;
 color:#f87171;
 }
 
-/* NOTIFICATIONS */
-
-.notification{
-background:#1e293b;
-padding:10px;
-border-radius:10px;
-margin-bottom:10px;
+.sign-time{
+font-size:12px;
+color:#94a3b8;
+margin-top:5px;
 }
 
-/* CURSOR GLOW */
+.download-btn{
+margin-top:10px;
+padding:8px 14px;
+border:none;
+border-radius:6px;
+background:#16a34a;
+color:white;
+cursor:pointer;
+}
 
-#cursorGlow{
+/* RETURN BUTTON */
+
+.home-return{
 position:fixed;
-width:120px;
-height:120px;
-pointer-events:none;
-background:radial-gradient(circle,rgba(59,130,246,.12),transparent 65%);
-border-radius:50%;
-transform:translate(-50%,-50%);
-mix-blend-mode:screen;
-filter:blur(28px);
-opacity:.6;
-z-index:999;
+bottom:25px;
+left:25px;
+padding:12px 20px;
+border-radius:50px;
+background:linear-gradient(90deg,#2563eb,#3b82f6);
+color:#fff;
+text-decoration:none;
+font-weight:600;
+box-shadow:0 0 18px rgba(59,130,246,.6);
+transition:.3s;
+}
+
+.home-return:hover{
+transform:scale(1.08);
 }
 
 </style>
@@ -230,197 +183,162 @@ z-index:999;
 
 <body>
 
-<!-- LOGIN -->
-
-<div class="login-screen" id="loginScreen">
-
-<div class="login-box">
-<h1>Client Portal</h1>
-<input placeholder="Email">
-<input type="password" placeholder="Password">
-<button onclick="login()">Login</button>
+<nav>
+<img src="spalogomain.png">
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="#">Dashboard</a>
+<a href="#">Projects</a>
 </div>
+</nav>
 
-</div>
+<section class="container">
 
-<!-- DASHBOARD -->
-
-<div class="dashboard" id="dashboard">
-
-<!-- NOTIFICATIONS -->
-
-<div class="section">
-<h2>Notifications</h2>
-<div id="notifications"></div>
-</div>
-
-<!-- PROJECT -->
-
-<div class="section">
-
-<h2>Project Progress</h2>
-
-<div class="card">
-
-Panel Upgrade – Hoboken NJ
-
-<div class="progress-bar">
-<div class="progress"></div>
-</div>
-
-<p style="margin-top:8px;color:#94a3b8">70% Complete</p>
-
-</div>
-
-</div>
-
-<!-- TECHNICIAN -->
-
-<div class="section">
-
-<h2>Assigned Technician</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Daniel Rivera</h3>
-<p>📞 (718) 555-9033</p>
-<p>Experience: 12 Years</p>
-<p>License: Master Electrician</p>
-</div>
-
-<div class="card">
-<h3>Next Visit</h3>
-<p>March 18 – 10:00 AM</p>
-</div>
-
-</div>
-
-</div>
-
-<!-- PHOTOS -->
-
-<div class="section">
-
-<h2>Progress Photos</h2>
-
-<div class="card">
-
-<input type="file" id="photoUpload">
-
-<div class="photo-grid" id="photoGrid"></div>
-
-</div>
-
-</div>
-
-<!-- INVOICE -->
-
-<div class="section">
-
-<h2>Invoice</h2>
-
-<div class="card">
-
-<table class="invoice-table">
-
-<tr class="category"><td colspan="2">Materials</td></tr>
-
-<tr><td>200A Panel</td><td>$420</td></tr>
-<tr><td>Breakers + Wiring</td><td>$210</td></tr>
-
-<tr class="category"><td colspan="2">Labor</td></tr>
-
-<tr><td>Installation</td><td>$720</td></tr>
-<tr><td>Inspection</td><td>$120</td></tr>
-
-<tr class="total"><td>Total</td><td>$1,590</td></tr>
-
-</table>
-
-<button class="pay-btn">Pay Invoice</button>
-
-</div>
-
-</div>
-
-<!-- DOCUMENTS -->
-
-<div class="section">
-
-<h2>Client Documents</h2>
+<h2 class="section-title">Client Documents</h2>
 
 <div class="doc-alert">
-⚠ Documents require signature before work begins
+⚠ Review the full document before signing.
 </div>
 
-<div class="grid">
+<div class="services-grid">
 
-<div class="card doc-card" data-doc="service">
-<h3>Service Agreement</h3>
+<div class="card doc-card" data-doc="general">
+
+<h3>General Contract</h3>
+
+<input type="file" class="doc-upload" accept="application/pdf">
+
+<div class="doc-viewer">
+<iframe class="doc-frame"></iframe>
+</div>
+
+<p>Scroll to the bottom of the document before signing.</p>
+
 <canvas class="sign-pad" width="350" height="120"></canvas>
-<button class="sign-btn">Sign Document</button>
-<p class="sign-status">Signature Required</p>
+
+<button class="sign-btn" disabled>Sign Document</button>
+
+<p class="sign-status">Preview Required</p>
+
+<p class="sign-time"></p>
+
+<button class="download-btn" style="display:none">Download Signed Copy</button>
+
 </div>
 
-<div class="card doc-card" data-doc="work">
-<h3>Work Authorization</h3>
+
+<div class="card doc-card" data-doc="liability">
+
+<h3>Liability Agreement</h3>
+
+<input type="file" class="doc-upload" accept="application/pdf">
+
+<div class="doc-viewer">
+<iframe class="doc-frame"></iframe>
+</div>
+
+<p>Scroll to the bottom of the document before signing.</p>
+
 <canvas class="sign-pad" width="350" height="120"></canvas>
-<button class="sign-btn">Sign Document</button>
-<p class="sign-status">Signature Required</p>
+
+<button class="sign-btn" disabled>Sign Document</button>
+
+<p class="sign-status">Preview Required</p>
+
+<p class="sign-time"></p>
+
+<button class="download-btn" style="display:none">Download Signed Copy</button>
+
 </div>
 
-<div class="card doc-card" data-doc="permit">
-<h3>Permit Authorization</h3>
+
+<div class="card doc-card" data-doc="payment">
+
+<h3>Payment Agreement</h3>
+
+<input type="file" class="doc-upload" accept="application/pdf">
+
+<div class="doc-viewer">
+<iframe class="doc-frame"></iframe>
+</div>
+
+<p>Scroll to the bottom of the document before signing.</p>
+
 <canvas class="sign-pad" width="350" height="120"></canvas>
-<button class="sign-btn">Sign Document</button>
-<p class="sign-status">Signature Required</p>
-</div>
+
+<button class="sign-btn" disabled>Sign Document</button>
+
+<p class="sign-status">Preview Required</p>
+
+<p class="sign-time"></p>
+
+<button class="download-btn" style="display:none">Download Signed Copy</button>
 
 </div>
 
 </div>
 
-</div>
+</section>
 
-<div id="cursorGlow"></div>
+<a href="index.html" class="home-return">⬅ Return Home</a>
 
 <script>
-
-/* LOGIN */
-
-function login(){
-document.getElementById("loginScreen").style.display="none"
-document.getElementById("dashboard").style.display="block"
-}
 
 /* SIGNATURE PAD */
 
 document.querySelectorAll(".sign-pad").forEach(pad=>{
-const ctx=pad.getContext("2d")
-let drawing=false
 
-pad.addEventListener("mousedown",()=>drawing=true)
-pad.addEventListener("mouseup",()=>drawing=false)
+const ctx=pad.getContext("2d");
+let drawing=false;
+
+pad.addEventListener("mousedown",()=>drawing=true);
+pad.addEventListener("mouseup",()=>drawing=false);
 
 pad.addEventListener("mousemove",e=>{
-if(!drawing)return
+if(!drawing)return;
 
-ctx.lineWidth=2
-ctx.lineCap="round"
-ctx.strokeStyle="black"
+const rect=pad.getBoundingClientRect();
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
 
-const rect=pad.getBoundingClientRect()
-const x=e.clientX-rect.left
-const y=e.clientY-rect.top
+ctx.lineWidth=2;
+ctx.lineCap="round";
 
-ctx.lineTo(x,y)
-ctx.stroke()
-ctx.beginPath()
-ctx.moveTo(x,y)
+ctx.lineTo(x,y);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(x,y);
 
-})
-})
+});
+
+});
+
+
+/* DOCUMENT UPLOAD */
+
+document.querySelectorAll(".doc-upload").forEach(upload=>{
+
+upload.addEventListener("change",function(){
+
+const file=this.files[0];
+const card=this.closest(".doc-card");
+const frame=card.querySelector(".doc-frame");
+const btn=card.querySelector(".sign-btn");
+const status=card.querySelector(".sign-status");
+
+const url=URL.createObjectURL(file);
+
+frame.src=url;
+
+status.textContent="Ready to Sign";
+status.style.color="#fbbf24";
+
+btn.disabled=false;
+
+});
+
+});
+
 
 /* SIGN BUTTON */
 
@@ -428,82 +346,55 @@ document.querySelectorAll(".sign-btn").forEach(btn=>{
 
 btn.addEventListener("click",()=>{
 
-const card=btn.closest(".doc-card")
-const status=card.querySelector(".sign-status")
-const id=card.dataset.doc
+const card=btn.closest(".doc-card");
+const status=card.querySelector(".sign-status");
+const time=card.querySelector(".sign-time");
+const canvas=card.querySelector(".sign-pad");
+const download=card.querySelector(".download-btn");
+const id=card.dataset.doc;
 
-status.textContent="Signed ✓"
-status.style.color="#4ade80"
+const timestamp=new Date().toLocaleString();
 
-localStorage.setItem("doc_"+id,"signed")
+status.textContent="Signed ✓";
+status.style.color="#4ade80";
 
-})
+time.textContent="Signed on "+timestamp;
 
-})
+localStorage.setItem("doc_"+id,"signed");
 
-/* RESTORE SIGNATURE STATUS */
+download.style.display="inline-block";
+
+download.onclick=()=>{
+const link=document.createElement("a");
+link.download=id+"_signature.png";
+link.href=canvas.toDataURL();
+link.click();
+};
+
+});
+
+});
+
+
+/* RESTORE STATUS */
 
 window.addEventListener("DOMContentLoaded",()=>{
 
 document.querySelectorAll(".doc-card").forEach(card=>{
 
-const id=card.dataset.doc
-const status=card.querySelector(".sign-status")
+const id=card.dataset.doc;
+const status=card.querySelector(".sign-status");
 
 if(localStorage.getItem("doc_"+id)==="signed"){
 
-status.textContent="Signed ✓"
-status.style.color="#4ade80"
+status.textContent="Signed ✓";
+status.style.color="#4ade80";
 
 }
 
-})
+});
 
-})
-
-/* PHOTO UPLOAD */
-
-const upload=document.getElementById("photoUpload")
-const grid=document.getElementById("photoGrid")
-
-upload.addEventListener("change",function(){
-
-const file=this.files[0]
-const reader=new FileReader()
-
-reader.onload=function(e){
-
-const img=document.createElement("img")
-img.src=e.target.result
-
-grid.appendChild(img)
-
-addNotification("New progress photo uploaded")
-
-}
-
-reader.readAsDataURL(file)
-
-})
-
-function addNotification(text){
-
-const note=document.createElement("div")
-note.className="notification"
-note.innerText=text
-
-document.getElementById("notifications").prepend(note)
-
-}
-
-/* CURSOR GLOW */
-
-const glow=document.getElementById("cursorGlow")
-
-document.addEventListener("mousemove",e=>{
-glow.style.left=e.clientX+'px'
-glow.style.top=e.clientY+'px'
-})
+});
 
 </script>
 
